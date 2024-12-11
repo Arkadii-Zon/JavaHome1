@@ -1,13 +1,15 @@
 package org.asd;
 
+import java.util.Arrays;
+
 public class H1 {
 
     // 1. Найти сумму элементов массива.
     public static void task1() {
         int[] array = {1, 2, 3, 4};
         int sum = 0;
-        for (int i = 0; i <= array.length; i++) {
-            sum += array[i];
+        for (int i = 0; i < array.length; i++) {
+            sum = sum + array[i];
         }
         System.out.println(sum);
     }
@@ -161,11 +163,11 @@ public class H1 {
         int min = array[0];
         int min2 = array[0];
         for (int i = 1; i < array.length; i++) {
-            if (array[i] < min) {
+            if (array[i] > min) {
                 min2 = min;
                 min = array[i];
             }
-            if (array[i] < min2 && array[i] > min ){
+            if (array[i] < min2 && array[i] > min) {
                 min2 = array[i];
             }
         }
@@ -176,9 +178,21 @@ public class H1 {
     public static void task15() {
 
         int[] array = {1, 2, 3, 4};
+        int leftIndex = 0;
+        int rigthIndex = array.length - 1;
+        while (leftIndex < rigthIndex) {
+            int a = array[leftIndex];
+            array[leftIndex] = array[rigthIndex];
+            array[rigthIndex] = a;
+            leftIndex++;
+            rigthIndex--;
+
+        }
+        System.out.println(Arrays.toString(array));
     }
+
     // 16. Найти все пары элементов, сумма которых равна заданному числу.
-    public static void task16 () {
+    public static void task16() {
         int[] array = {1, 2, 3, 4, 5};
         int target = 6;
         for (int i = 0; i < array.length; i++) {
@@ -189,7 +203,6 @@ public class H1 {
             }
         }
     }
-
 
 
     // 17. Проверить, есть ли в массиве дубликаты.
@@ -214,14 +227,14 @@ public class H1 {
         int[] array = {0, 1, 0, 3, 0};
         int count = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == 0){
+            if (array[i] == 0) {
                 count++;
             }
         }
         int[] newarray = new int[array.length - count];
         int a = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != 0){
+            if (array[i] != 0) {
                 newarray[a++] = array[i];
             }
         }
@@ -234,7 +247,7 @@ public class H1 {
         int divisor = 5;
         int count = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] % 5 == 0){
+            if (array[i] % 5 == 0) {
                 count++;
             }
         }
@@ -261,7 +274,7 @@ public class H1 {
         int[] array = {1, 2, -3, 4, -5};
         int index = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] < 0){
+            if (array[i] < 0) {
                 index = i;
                 break;
             }
@@ -273,7 +286,7 @@ public class H1 {
     public static void task23() {
         int[] array = {1, 2, 3, 4, 5};
         int sum = 0;
-        for (int i = 0; i < array.length; i+=2) {
+        for (int i = 0; i < array.length; i += 2) {
             sum = sum + array[i];
         }
         System.out.println(sum);
@@ -307,14 +320,13 @@ public class H1 {
     // 26. Найти количество уникальных элементов в массиве.
     public static void task26() {
         int[] array = {1, 2, 2, 3, 4, 4, 5};
-        int[] array = {1, 2, 2, 3, 4, 4, 5};
         int count = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
-                if(array[i] == array[j] && (i != j)){
+                if (array[i] == array[j] && (i != j)) {
                     break;
                 }
-                if (j == array.length -1){
+                if (j == array.length - 1) {
                     count++;
 
                 }
@@ -328,11 +340,11 @@ public class H1 {
         int[] array = {3, 2, 1, 4, 5};
         int min = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] < array[min]){
+            if (array[i] < array[min]) {
                 min = i;
             }
         }
-        if (min != 0){
+        if (min != 0) {
             int a = array[min];
             array[min] = array[0];
             array[0] = a;
@@ -346,13 +358,15 @@ public class H1 {
         int count = 1;
         int maxl = 1;
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] == array[i + 1]){
-                count = 1;
+            if (array[i] == array[i + 1]) {
+                count++;
             } else {
-                if (count > maxl){
+                if (count > maxl) {
                     maxl = count;
                     count = 1;
-
+                }
+                if (count > maxl) {
+                    maxl = count;
                 }
             }
         }
@@ -362,18 +376,15 @@ public class H1 {
     // 29. Найти сумму положительных элементов, расположенных после первого отрицательного.
     public static void task29() {
         int[] array = {1, -2, 3, 4, -5};
-        int minindex = 0;
         int sum = 0;
+        boolean a = false;
         for (int i = 0; i < array.length; i++) {
-            if (array[minindex] > array[i] && array[i] < 0){
-                minindex = i;
-                break;
+            if (array[i] < 0) {
+                a = true;
+                continue;
             }
-        }
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] >= 0){
+            if (a && array[i] > 0) {
                 sum = sum + array[i];
-
             }
         }
         System.out.println(sum);
@@ -381,7 +392,7 @@ public class H1 {
 
     // 30. Удалить все дубликаты из массива.
     public static void task30() {
-       int[] array = {1, 2, 2, 3, 4, 4, 5};
+        int[] array = {1, 2, 2, 3, 4, 4, 5};
         int[] ar2 = new int[array.length];
         int a = 0;
         for (int i = 0; i < array.length; i++) {
@@ -399,12 +410,14 @@ public class H1 {
         }
         int[] ar3 = Arrays.copyOf(ar2, a);
         System.out.println(Arrays.toString(ar3));
-        }
+    }
 
     public static void main(String[] args) {
 
     }
-    }
+
+
+}
 
 
 

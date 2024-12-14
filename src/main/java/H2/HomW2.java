@@ -339,49 +339,192 @@ public class HomW2 {
     // 21. Генерация нового массива из четных чисел.
     public static void task21() {
         int[] array = {1, 2, 3, 4, 5, 6};
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0){
+                count++;
+            }
+        }
+
+        int[] newarray = new int[count];
+        int index = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                newarray[index] = array[i];
+                index++;
+            }
+        }
+        System.out.println(Arrays.toString(newarray));
     }
 
     // 22. Генерация нового массива из нечетных чисел.
     public static void task22() {
         int[] array = {1, 2, 3, 4, 5, 6};
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 != 0){
+                count++;
+            }
+        }
+
+        int[] newarray = new int[count];
+        int index = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 != 0) {
+                newarray[index] = array[i];
+                index++;
+            }
+        }
+        System.out.println(Arrays.toString(newarray));
     }
 
     // 23. Проверка на палиндром в массиве строк.
     public static void task23() {
         String[] array = {"level", "hello", "radar", "world"};
+        boolean pal = false;
+        int count = 0; // В задании не сказано, но я решил посчитать кол-во слов подходящих под условие
+        for (int i = 0; i < array.length; i++) {
+            int a = 0;
+            int b = array.length;
+            if (array[i].charAt(a) == array[i].charAt(b)){
+                pal = true;
+                count++;
+            }
+        }
+        System.out.println(pal);
+        System.out.println(count);
     }
 
     // 24. Поиск всех подстрок в строках массива, соответствующих заданному шаблону.
     public static void task24() {
         String[] array = {"apple", "application", "banana", "grape"};
         String pattern = "app";
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].contains("app")){
+                count++;
+                System.out.println(array[i]);
+            }
+        }
+        System.out.println(count);
     }
 
     // 25. Создание массива чисел с четными индексами.
     public static void task25() {
         int[] array = {1, 2, 3, 4, 5, 6};
+        int[] ar2 = new int[array.length];
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 == 0 ){
+                ar2[i] = array[i];
+            }
+
+        }
+        for (int i = 0; i < ar2.length; i++) {
+            if (ar2[i] == 0){
+                count++;
+            }
+        }
+        int index = 0;
+        for (int i = 0; i < ar2.length; i++) {
+            if (ar2[i]!= 0){
+                ar2[index++] = ar2[i];
+            }
+        }
+        int[] newarray = Arrays.copyOf(ar2, count);
+        System.out.println(Arrays.toString(newarray));
+        System.out.println(count);
     }
 
     // 26. Создание массива чисел с нечетными индексами.
     public static void task26() {
         int[] array = {1, 2, 3, 4, 5, 6};
+        int[] ar2 = new int[array.length];
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 != 0 ){
+                ar2[i] = array[i];
+            }
+
+        }
+        for (int i = 0; i < ar2.length; i++) {
+            if (ar2[i] == 0){
+                count++;
+            }
+        }
+        int index = 0;
+        for (int i = 0; i < ar2.length; i++) {
+            if (ar2[i]!= 0){
+                ar2[index++] = ar2[i];
+            }
+        }
+        int[] newarray = Arrays.copyOf(ar2, count);
+        System.out.println(Arrays.toString(newarray));
+        System.out.println(count);
 
     }
 
     // 27. Разделение массива строк на два: строки с четной и нечетной длиной.
     public static void task27() {
         String[] array = {"apple", "banana", "cat", "dog", "elephant"};
+        String[] array1 = new String[array.length];
+        String[] array2 = new String[array.length];
+        int count1 = 0;
+        int count2 = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].length() % 2 == 0){
+                array1[i] = array[i];
+                count1++;
+            }
+            else {
+                array2[i] = array[i];
+                count2++;
+            }
+        }
+        int index1 = 0;
+        int index2 = 0;
+        for (int i = 0; i < array1.length; i++) {
+            if ((array1[i] != null)){
+                array1[index1] = array1[i];
+                index1++;
+            }
+        }
+        for (int i = 0; i < array2.length; i++) {
+            if (array2[i] != null){
+                array2[index2] = array2[i];
+                index2++;
+            }
+        }
+        String[] newarray1 = Arrays.copyOf(array1, count1);
+        String[] newarray2 = Arrays.copyOf(array2, count2);
+        System.out.println(Arrays.toString(newarray1));
+        System.out.println(Arrays.toString(newarray2));
     }
 
     // 28. Найти все строки, которые начинаются и заканчиваются одинаковой буквой.
     public static void task28() {
         String[] array = {"apple", "banana", "level", "radar", "hello"};
+        for (int i = 0; i < array.length; i++) {
+            int a = 0;
+            int b = array.length - 1;
+            if (array[i].charAt(a) == array[i].charAt(b)){
+                System.out.println(array[i]);
+            }
+        }
 
     }
 
     // 29. Создать массив чисел, которые являются квадратами элементов исходного массива.
     public static void task29() {
         int[] array = {1, 2, 3, 4, 5};
+        for (int i = 0; i < array.length; i++) {
+            array[i] = array[i] * array[i];
+        }
+        System.out.println(Arrays.toString(array));
 
     }
 
